@@ -23,7 +23,7 @@ describe('create-release', () => {
       };
     });
     SentryCli.getPath = getPath;
-    core.getInput.mockReturnValueOnce('refs/tags/v1.0.0').mockReturnValueOnce('qa');
+    core.getInput.mockReturnValueOnce('refs/tags/v1.0.0');
 
     await run();
 
@@ -61,7 +61,6 @@ describe('create-release', () => {
     SentryCli.getPath = getPath;
     core.getInput
       .mockReturnValueOnce('refs/tags/v1.0.0')
-      .mockReturnValueOnce('qa')
       .mockReturnValueOnce('myAwesomeProject-');
 
     await run();
