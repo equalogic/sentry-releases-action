@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const SentryCli = require('@sentry/cli');
-const {runCommand} = require('./runCommand');
 
 const run = async () => {
   try {
@@ -8,9 +7,6 @@ const run = async () => {
 
     // Get the inputs from the workflow file: https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs
     const tagName = core.getInput('tagName', {
-      required: true,
-    });
-    const environment = core.getInput('environment', {
       required: true,
     });
     const releaseNamePrefix = core.getInput('releaseNamePrefix', {
@@ -46,12 +42,6 @@ const run = async () => {
     if (sourceMapOptions) {
       await cli.releases.uploadSourceMaps(releaseName, JSON.parse(sourceMapOptions));
     }
-
-    // Create a deployment (A node.js function isn't exposed for this operation.)
-    const sentryCliPath = SentryCli.getPath();
-
-    core.info(`sentryCliPath: ${sentryCliPath}`);
-    await runCommand(sentryCliPath, ['releases', 'deploys', releaseName, 'new', '-e', environment]);
 
     // Finalize the release
     await cli.releases.finalize(releaseName);

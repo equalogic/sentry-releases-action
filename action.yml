@@ -4,9 +4,6 @@ inputs:
   tagName:
     description: 'Tag being released'
     required: true
-  environment:
-    description: 'Environment name'
-    required: true
   releaseNamePrefix:
     description: 'String to prefix tagName with. Used as the Sentry release name.'
     required: false

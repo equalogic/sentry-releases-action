@@ -8,6 +8,10 @@
 
 > A GitHub action that creates [releases for Sentry.io](https://docs.sentry.io/workflow/releases/?platform=javascript).
 
+ℹ️  This is a fork of [tclindner/sentry-releases-action](https://github.com/tclindner/sentry-releases-action)
+which has been modified to **not** create a deploy in Sentry at the same time a release
+is created. To deploy a release, use [tclindner/sentry-release-deploy-action](https://github.com/tclindner/sentry-release-deploy-action).
+
 ## What is sentry-releases-action?
 
 A GitHub action that makes is easy to create a release in Sentry.io based on events in GitHub. Examples:
@@ -28,10 +32,6 @@ Create a workflow `.yml` file in your repo's `.github/workflows` directory. An [
 #### `tagName`
 
 **Required** The tag being released. This is used as the Sentry release name. You can optionally prefix it using `releaseNamePrefix`.
-
-#### `environment`
-
-**Required** The name of the environment the release was deployed to.
 
 #### `releaseNamePrefix`
 
@@ -76,7 +76,6 @@ env:
   SENTRY_PROJECT: myAwesomeProject
 with:
   tagName: ${{ github.ref }}
-  environment: qa
 ```
 
 > Note: `sentry-releases-action` will automatically trim `refs/tags/` from `tagName`. This means you can pass `GITHUB_REF` directly from release events without the need of mutating it first.
@@ -109,7 +108,6 @@ jobs:
           SENTRY_PROJECT: myAwesomeProject
         with:
           tagName: ${{ github.ref }}
-          environment: qa
 ```
 
 Assume you tagged your release as `v1.0.0`. `github.ref` would equal `refs/tags/v1.0.0`. This action automatically strips `refs/tags/`, so the Sentry release name is `v1.0.0`.
@@ -140,7 +138,6 @@ jobs:
           SENTRY_PROJECT: myAwesomeProject
         with:
           tagName: ${{ github.ref }}
-          environment: qa
           releaseNamePrefix: myAwesomeProject-
 ```
 
@@ -176,7 +173,6 @@ jobs:
           SENTRY_PROJECT: myAwesomeProject
         with:
           tagName: ${{ github.ref }}
-          environment: qa
           releaseNamePrefix: myAwesomeProject-
           sourceMapOptions: '{"include": ["build"]}'
 ```

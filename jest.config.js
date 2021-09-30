@@ -1,7 +1,7 @@
 module.exports = {
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.js', '!src/main.js', '!src/runCommand.js'],
+  collectCoverageFrom: ['src/**/*.js', '!src/main.js'],
   coverageThreshold: {
     global: {
       branches: 100,
