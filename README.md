@@ -29,10 +29,6 @@ Create a workflow `.yml` file in your repo's `.github/workflows` directory. An [
 
 **Required** The tag being released. This is used as the Sentry release name. You can optionally prefix it using `releaseNamePrefix`.
 
-#### `environment`
-
-**Required** The name of the environment the release was deployed to.
-
 #### `releaseNamePrefix`
 
 **Optional** String that is prefixed to the tag to form the Sentry release name.
@@ -76,7 +72,6 @@ env:
   SENTRY_PROJECT: myAwesomeProject
 with:
   tagName: ${{ github.ref }}
-  environment: qa
 ```
 
 > Note: `sentry-releases-action` will automatically trim `refs/tags/` from `tagName`. This means you can pass `GITHUB_REF` directly from release events without the need of mutating it first.
@@ -109,7 +104,6 @@ jobs:
           SENTRY_PROJECT: myAwesomeProject
         with:
           tagName: ${{ github.ref }}
-          environment: qa
 ```
 
 Assume you tagged your release as `v1.0.0`. `github.ref` would equal `refs/tags/v1.0.0`. This action automatically strips `refs/tags/`, so the Sentry release name is `v1.0.0`.
@@ -140,7 +134,6 @@ jobs:
           SENTRY_PROJECT: myAwesomeProject
         with:
           tagName: ${{ github.ref }}
-          environment: qa
           releaseNamePrefix: myAwesomeProject-
 ```
 
@@ -176,7 +169,6 @@ jobs:
           SENTRY_PROJECT: myAwesomeProject
         with:
           tagName: ${{ github.ref }}
-          environment: qa
           releaseNamePrefix: myAwesomeProject-
           sourceMapOptions: '{"include": ["build"]}'
 ```
