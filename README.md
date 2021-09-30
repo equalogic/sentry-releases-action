@@ -8,6 +8,10 @@
 
 > A GitHub action that creates [releases for Sentry.io](https://docs.sentry.io/workflow/releases/?platform=javascript).
 
+ℹ️  This is a fork of [tclindner/sentry-releases-action](https://github.com/tclindner/sentry-releases-action)
+which has been modified to **not** create a deploy in Sentry at the same time a release
+is created. To deploy a release, use [tclindner/sentry-release-deploy-action](https://github.com/tclindner/sentry-release-deploy-action).
+
 ## What is sentry-releases-action?
 
 A GitHub action that makes is easy to create a release in Sentry.io based on events in GitHub. Examples:
