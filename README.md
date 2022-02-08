@@ -69,7 +69,7 @@ Refer to [Sentry's CLI JS](https://github.com/getsentry/sentry-cli/blob/1f5cdbb6
 
 ```yml
 name: Create a Sentry.io release
-uses: madscience/sentry-releases-action@v2.0.0
+uses: equalogic/sentry-releases-action@v2.0.0
 env:
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   SENTRY_ORG: myAwesomeOrg
@@ -101,7 +101,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create a Sentry.io release
-        uses: madscience/sentry-releases-action@v2.0.0
+        uses: equalogic/sentry-releases-action@v2.0.0
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: myAwesomeOrg
@@ -131,7 +131,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create a Sentry.io release
-        uses: madscience/sentry-releases-action@v2.0.0
+        uses: equalogic/sentry-releases-action@v2.0.0
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: myAwesomeOrg
@@ -166,7 +166,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create a Sentry.io release
-        uses: madscience/sentry-releases-action@v2.0.0
+        uses: equalogic/sentry-releases-action@v2.0.0
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: myAwesomeOrg
